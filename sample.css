@@ -20,20 +20,40 @@
 
 .workspace{
   display: hidden;
+  -webkit-transition: -webkit-transform 0.2s linear;
+  -moz-transition: -moz-transform 0.2s linear
+}
+
+.workspace.right{
+  transform: translate(100%);
+}
+
+.workspace.left{
+  transform: translate(-100%);
+}
+
+.workspace.up{
+  transform: translate(0,-100%);
+}
+
+.workspace.down{
+  transform: translate(0,100%);
 }
 
 .workspace.active{
-  display: visible;
+  display: inline-block;
+  vertical-align: top;
   height:100%;
   width:100%;
-  overflow: hidden;
 }
 
 .workspaces{
-  position: absolute;
   margin: 0px;
   padding: 0px;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+}
+
+body{
+  overflow-x:hidden;
 }

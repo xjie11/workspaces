@@ -17,25 +17,7 @@
 
     $.fn.init_workspaces = function() {
 
-        $('#workspace-1').addClass('active').css({
-          top:0,
-          left:0,
-        });
-
-        $('#workspace-2').css({
-          top:0,
-          left:"100%",
-        });
-
-        $('#workspace-3').css({
-          top:"100%",
-          left:0,
-        });
-
-        $('#workspace-4').css({
-          top:"100%",
-          left:"100%",
-        });
+        $('#workspace-1').addClass('active');
 
         $('body').keyup(function(e){
           var key = e.which;
@@ -66,131 +48,63 @@
       switch (direction) {
         case "left":
           if (activeIndex % 2 === 0){
-              $('#workspace-'+ (activeIndex - 1)).addClass('active').stop().animate({
-                left:0
-              }, 1000);
-              $('#workspace-'+activeIndex).animate({
-                left:"100%"
-              }, "fast", "linear", function(){
-                $('#workspace-'+activeIndex).removeClass('active');
-                loadSurroundingWorkspaces(activeIndex -1);
-              });
-              return activeIndex - 1;
+            $('#workspace-'+ (activeIndex - 1)).addClass('left');
+
+            setTimeout(function(){
+              $('#workspace-'+ activeIndex).addClass('right');
+              $('#workspace-'+ (activeIndex - 1)).addClass('active').removeClass('left');
+              setTimeout(function(){
+                $('#workspace-'+ activeIndex).removeClass('active right');
+              }, 200);
+            }, 200);
+            return activeIndex - 1;
           }
           break;
         case "right":
           if (activeIndex % 2 === 1){
-              $('#workspace-'+ (activeIndex + 1)).stop().addClass('active').animate({
-                left:0
-              }, 1000);
-              $('#workspace-'+activeIndex).animate({
-                left:"-100%"
-              }, 1000, function(){
-                $('#workspace-'+activeIndex).removeClass('active');
-                loadSurroundingWorkspaces(activeIndex + 1);
-              });
-              return activeIndex + 1;
+            $('#workspace-'+ (activeIndex + 1)).addClass('right');
+
+            setTimeout(function(){
+              $('#workspace-'+ activeIndex).addClass('left');
+              $('#workspace-'+ (activeIndex + 1)).addClass('active').removeClass('right');
+              setTimeout(function(){
+                $('#workspace-'+ activeIndex).removeClass('active left');
+              }, 200);
+            }, 200);
+            return activeIndex + 1;
           }
           break;
         case "up":
           if (activeIndex > 2){
-              $('#workspace-'+ (activeIndex - 2)).stop().addClass('active').animate({
-                top:0
-              }, 1000);
-              $('#workspace-'+activeIndex).animate({
-                top:"100%"
-              }, 1000, function(){
-                $('#workspace-'+activeIndex).removeClass('active');
-                loadSurroundingWorkspaces(activeIndex -2);
-              });
+              $('#workspace-'+ (activeIndex - 2)).addClass('up');
+
+              setTimeout(function(){
+                $('#workspace-'+ activeIndex).addClass('down');
+                $('#workspace-'+ (activeIndex - 2)).addClass('active').removeClass('up');
+                setTimeout(function(){
+                  $('#workspace-'+ activeIndex).removeClass('active down');
+                }, 200);
+              }, 200);
               return activeIndex - 2;
           }
           break;
         case "down":
           if (activeIndex <= 2){
-              $('#workspace-'+ (activeIndex + 2)).stop().addClass('active').animate({
-                top:0
-              }, 1000);
-              $('#workspace-'+activeIndex).animate({
-                top:"-100%"
-              }, 1000, function(){
-                $('#workspace-'+activeIndex).removeClass('active');
-                loadSurroundingWorkspaces(activeIndex + 2);
-              });
+              $('#workspace-'+ (activeIndex + 2)).addClass('down');
+
+              setTimeout(function(){
+                $('#workspace-'+ activeIndex).addClass('up');
+                $('#workspace-'+ (activeIndex + 2)).addClass('active').removeClass('down');
+                setTimeout(function(){
+                  $('#workspace-'+ activeIndex).removeClass('active up');
+                }, 200);
+              }, 200);
               return activeIndex + 2;
           }
           break;
       }
       console.log("error with activeIndex: ", activeIndex);
       return -1;
-    }
-
-    function loadSurroundingWorkspaces(activeIndex){
-        switch (activeIndex){
-          case 1:
-            $('#workspace-1').css({
-              top:0,
-              left:0,
-            });
-
-            $('#workspace-2').css({
-              top:0,
-              left:"100%",
-            });
-
-            $('#workspace-3').css({
-              top:"100%",
-              left:0,
-            });
-
-            $('#workspace-4').css({
-              top:"100%",
-              left:"100%",
-            });
-            break;
-          case 2:
-            $('#workspace-1').css({
-              top:0,
-              left:"-100%",
-            });
-
-            $('#workspace-2').css({
-              top:0,
-              left:0,
-            });
-
-            $('#workspace-3').css({
-              top:"100%",
-              left:"-100%",
-            });
-
-            $('#workspace-4').css({
-              top:"100%",
-              left:0,
-            });
-            break;
-          case 3:
-            $('#workspace-1').css({
-              top:"-100%",
-              left:0,
-            });
-
-            $('#workspace-2').css({
-              top:"-100%",
-              left:"100%",
-            });
-
-            $('#workspace-3').css({
-              top:0,
-              left:0,
-            });
-
-            $('#workspace-4').css({
-              top:0,
-              left:"100%",
-            });
-            break;
-        }
     }
 
 }(jQuery));

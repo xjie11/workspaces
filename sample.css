@@ -1,0 +1,39 @@
+#workspace-1{
+  background-image: url(img/background1.jpg);
+  background-size:cover;
+}
+
+#workspace-2{
+  background-image: url(img/background2.jpg);
+  background-size: cover;
+}
+
+#workspace-3{
+  background-image: url(img/3.jpg);
+  background-size: cover;
+}
+
+#workspace-4{
+  background-image: url(img/4.jpg);
+  background-size: cover;
+}
+
+.workspace{
+  display: hidden;
+}
+
+.workspace.active{
+  display: visible;
+  height:100%;
+  width:100%;
+  overflow: hidden;
+}
+
+.workspaces{
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}

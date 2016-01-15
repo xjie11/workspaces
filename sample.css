@@ -1,27 +1,27 @@
 #workspace-1{
   background-image: url(img/background1.jpg);
-  background-size:cover;
 }
 
 #workspace-2{
   background-image: url(img/background2.jpg);
-  background-size: cover;
 }
 
 #workspace-3{
   background-image: url(img/3.jpg);
-  background-size: cover;
 }
 
 #workspace-4{
   background-image: url(img/4.jpg);
-  background-size: cover;
 }
 
 .workspace{
   display: hidden;
   -webkit-transition: -webkit-transform 0.2s linear;
-  -moz-transition: -moz-transform 0.2s linear
+  -moz-transition: -moz-transform 0.2s linear;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
 }
 
 .workspace.right{
@@ -52,12 +52,16 @@
 }
 
 .workspaces{
-  margin: 0px;
-  padding: 0px;
+  padding:0;
+  margin:0;
   width: 100%;
   height: 100%;
 }
 
 body{
   overflow-x:hidden;
+  height:100%;
+  width:100%;
+  padding:0;
+  margin:0;
 }

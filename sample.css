@@ -26,18 +26,22 @@
 
 .workspace.right{
   transform: translate(100%);
+  -webkit-transform: -webkit-translate(100%);
 }
 
 .workspace.left{
   transform: translate(-100%);
+  -webkit-transform: -webkit-translate(-100%);
 }
 
 .workspace.up{
   transform: translate(0,-100%);
+  -webkit-transform: -webkit-translate(0,-100%);
 }
 
 .workspace.down{
   transform: translate(0,100%);
+  -webkit-transform: -webkit-translate(0,100%);
 }
 
 .workspace.active{
